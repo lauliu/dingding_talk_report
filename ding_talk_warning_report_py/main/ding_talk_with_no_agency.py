@@ -5,11 +5,13 @@ import pymysql
 from sqlalchemy import create_engine
 import pandas as pd
 import sys
-
+import os
 
 def getcon():
     config = configparser.ConfigParser()
-    config.read('../conf/myconfig.ini')
+    file_path = os.path.dirname(__file__)
+    ini_path = "%s/../conf/myconfig.ini"%file_path
+    config.read(ini_path)
     config_host = config['mysql_dw_config']["host"]
     config_port = int(config['mysql_dw_config']["port"])
     config_user = config['mysql_dw_config']["user"]
